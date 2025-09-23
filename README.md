@@ -8,7 +8,8 @@ or
 
 conda create -p PATH python=3.11
 
-# Install openCV
+# Install packages
+conda install jupyter
 pip install opencv-contrib-python
 
 ## Export conda environment
