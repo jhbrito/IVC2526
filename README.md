@@ -10,6 +10,8 @@ conda create -p PATH python=3.11
 
 # Install packages
 conda install jupyter
+conda install pillow
+conda install scikit-image
 pip install opencv-contrib-python
 
 ## Export conda environment

@@ -38,7 +38,18 @@ imagem_cores[int(h_cores/2):, 0:int(w_cores/2)] = [0, 255, 255]
 cv2.imshow("imagem", imagem)
 cv2.imshow("imagem_cores", imagem_cores)
 
+imagem_float = imagem / 255.0
+cv2.imshow("imagem_float", imagem_float)
+
+imagem_float_2 = imagem / 1.0
+cv2.imshow("imagem_float_2", imagem_float_2)
+
+imagem_cores_float = imagem_cores/255.0
+cv2.imshow("imagem_cores_float", imagem_cores_float)
+
+imagem_cores_float_2 = imagem_cores/1.0
+cv2.imshow("imagem_cores_float_2", imagem_cores_float_2)
+
 cv2.waitKey(0)
 cv2.destroyAllWindows()
-
 
