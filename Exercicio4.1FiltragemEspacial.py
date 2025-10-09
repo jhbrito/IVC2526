@@ -69,66 +69,82 @@ for i, file in enumerate(files):
     plt.subplot(5, 4, 1)
     plt.imshow(cv2.cvtColor(image_gray, cv2.COLOR_BGR2RGB))
     plt.title("image")
+    plt.axis('off')
 
     plt.subplot(5, 4, 2)
     plt.imshow(cv2.cvtColor(image_gray_lowpass_3x3, cv2.COLOR_BGR2RGB))
     plt.title("low-pass image 3x3")
+    plt.axis('off')
 
     plt.subplot(5, 4, 3)
     plt.imshow(cv2.cvtColor(image_gray_lowpass_5x5, cv2.COLOR_BGR2RGB))
     plt.title("low-pass image 5x5")
+    plt.axis('off')
 
     plt.subplot(5, 4, 4)
     plt.imshow(cv2.cvtColor(image_gray_lowpass_7x7, cv2.COLOR_BGR2RGB))
     plt.title("low-pass image 7x7")
+    plt.axis('off')
 
     plt.subplot(5, 4, 6)
     plt.imshow(cv2.cvtColor(image_blur_3x3, cv2.COLOR_BGR2RGB))
     plt.title("blur 3x3")
+    plt.axis('off')
 
     plt.subplot(5, 4, 7)
     plt.imshow(cv2.cvtColor(image_blur_5x5, cv2.COLOR_BGR2RGB))
     plt.title("blur 5x5")
+    plt.axis('off')
 
     plt.subplot(5, 4, 8)
     plt.imshow(cv2.cvtColor(image_blur_7x7, cv2.COLOR_BGR2RGB))
     plt.title("blur 7x7")
+    plt.axis('off')
 
     plt.subplot(5, 4, 10)
     plt.imshow(cv2.cvtColor(gaussian_blur_3x3, cv2.COLOR_BGR2RGB))
     plt.title("gaussian blur 3x3")
+    plt.axis('off')
 
     plt.subplot(5, 4, 11)
     plt.imshow(cv2.cvtColor(gaussian_blur_5x5, cv2.COLOR_BGR2RGB))
     plt.title("gaussian blur 5x5")
+    plt.axis('off')
 
     plt.subplot(5, 4, 12)
     plt.imshow(cv2.cvtColor(gaussian_blur_7x7, cv2.COLOR_BGR2RGB))
     plt.title("gaussian blur 7x7")
+    plt.axis('off')
 
     plt.subplot(5, 4, 14)
     plt.imshow(cv2.cvtColor(median_blur_3x3, cv2.COLOR_BGR2RGB))
     plt.title("median blur 3x3")
+    plt.axis('off')
 
     plt.subplot(5, 4, 15)
     plt.imshow(cv2.cvtColor(median_blur_5x5, cv2.COLOR_BGR2RGB))
     plt.title("median blur 5x5")
+    plt.axis('off')
 
     plt.subplot(5, 4, 16)
     plt.imshow(cv2.cvtColor(median_blur_7x7, cv2.COLOR_BGR2RGB))
     plt.title("median blur 7x7")
+    plt.axis('off')
 
     plt.subplot(5, 4, 18)
     plt.imshow(cv2.cvtColor(10*image_gray_highpass_A, cv2.COLOR_BGR2RGB))
     plt.title("highpass A")
+    plt.axis('off')
 
     plt.subplot(5, 4, 19)
     plt.imshow(cv2.cvtColor(10*image_gray_highpass_B, cv2.COLOR_BGR2RGB))
     plt.title("highpass B")
-    #
+    plt.axis('off')
+
     plt.subplot(5, 4, 20)
     plt.imshow(cv2.cvtColor(10*image_gray_highpass_C, cv2.COLOR_BGR2RGB))
     plt.title("highpass C")
+    plt.axis('off')
 
     plt.show()
 

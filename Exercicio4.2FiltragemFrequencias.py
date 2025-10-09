@@ -29,34 +29,68 @@ for i, file in enumerate(files):
     centro_y = image_fft_shift.shape[0] / 2
     centro_x = image_fft_shift.shape[1] / 2
 
-    raio = image_fft_shift.shape[0]/2
-    for y in range(image_fft_shift.shape[0]):
-        for x in range(image_fft_shift.shape[1]):
+    raio = np.min(image_fft_shift.shape)/ 2
+    raio /= 4
+
+    for y in range(filtro_low_pass.shape[0]):
+        for x in range(filtro_low_pass.shape[1]):
             d = np.sqrt((x-centro_x)**2 + (y-centro_y)**2)
             if d < raio:
                 filtro_low_pass[y, x] = 1
 
+    image_fft_shift_filtered = image_fft_shift * filtro_low_pass
+    image_fft_shift_filtered_v = np.abs(image_fft_shift_filtered)
+    image_fft_shift_filtered_v = image_fft_shift_filtered_v / np.mean(image_fft_shift_filtered_v)
 
+    image_fft_shift_filtered_unshift = np.fft.ifftshift(image_fft_shift_filtered)
+    image_fft_shift_filtered_unshift_v = np.abs(image_fft_shift_filtered_unshift)
+    image_fft_shift_filtered_unshift_v = image_fft_shift_filtered_unshift_v / np.mean(image_fft_shift_filtered_unshift_v)
 
+    image_fft_shift_filtered_unshift_ifft = np.fft.ifft2(image_fft_shift_filtered_unshift)
+    image_filtered = np.abs(image_fft_shift_filtered_unshift_ifft)
 
 
     plt.subplots(dpi=300, layout='constrained')
     plt.axis('off')
 
-    plt.subplot(5, 4, 1)
+    plt.subplot(3, 3, 1)
+    plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
+    plt.title("Imagem original")
+    plt.axis('off')
+
+    plt.subplot(3, 3, 4)
     plt.imshow(cv2.cvtColor(image_gray, cv2.COLOR_GRAY2RGB))
-    plt.title("image")
+    plt.title("Imagem grayscale")
+    plt.axis('off')
 
-    plt.subplot(5, 4, 2)
+    plt.subplot(3, 3, 5)
     plt.imshow(cv2.cvtColor(image_fft_v, cv2.COLOR_GRAY2RGB))
-    plt.title("fft")
+    plt.title("Espectro")
+    plt.axis('off')
 
-    plt.subplot(5, 4, 3)
+    plt.subplot(3, 3, 6)
     plt.imshow(cv2.cvtColor(image_fft_shift_v, cv2.COLOR_GRAY2RGB))
-    plt.title("fft shift")
+    plt.title("Espectro shift")
+    plt.axis('off')
 
-    plt.subplot(5, 4, 4)
+    plt.subplot(3, 3, 3)
     plt.imshow(cv2.cvtColor(filtro_low_pass, cv2.COLOR_GRAY2RGB))
-    plt.title("filtro low pass")
+    plt.title("Filtro low pass")
+    plt.axis('off')
+
+    plt.subplot(3, 3, 9)
+    plt.imshow(cv2.cvtColor(image_fft_shift_filtered_v, cv2.COLOR_GRAY2RGB))
+    plt.title("Espectro filtrado")
+    plt.axis('off')
+
+    plt.subplot(3, 3, 8)
+    plt.imshow(cv2.cvtColor(image_fft_shift_filtered_unshift_v, cv2.COLOR_GRAY2RGB))
+    plt.title("Espectro filtrado unshift")
+    plt.axis('off')
+
+    plt.subplot(3, 3, 7)
+    plt.imshow(cv2.cvtColor(image_filtered, cv2.COLOR_GRAY2RGB))
+    plt.title("Imagem filtrada")
+    plt.axis('off')
 
     plt.show()
