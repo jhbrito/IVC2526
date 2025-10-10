@@ -5,6 +5,9 @@ import os
 
 folder = "Files"
 files = []
+files.append("riscas horizontais")
+files.append("riscas verticais")
+files.append("quadrado")
 files.append("baboon.png")
 files.append("cao.jpg")
 files.append("lena.png")
@@ -12,7 +15,22 @@ files.append("Sharbat_Gula.jpg")
 files.append("moedas.jpg")
 
 for i, file in enumerate(files):
-    image = cv2.imread(os.path.join(folder, file))
+    if file == "riscas horizontais":
+        image = np.zeros((256,256,3), np.uint8)
+        image[0:32, :, :] = 255
+        image[64:96, :, :] = 255
+        image[128:160, :, :] = 255
+        image[192:224, :, :] = 255
+    elif file == "riscas verticais":
+        image = np.zeros((256, 256, 3), np.uint8)
+        image[:, 0:64, :] = 255
+        image[:, 128:196, :] = 255
+    elif file == "quadrado":
+        image = np.zeros((256, 256, 3), np.uint8)
+        image[64:128, 64:128, :] = 255
+    else:
+        image = cv2.imread(os.path.join(folder, file))
+
     image_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     image_gray = (image_gray/255.0).astype(np.float32)
 
@@ -82,7 +100,7 @@ for i, file in enumerate(files):
     plt.imshow(cv2.cvtColor(image_fft_shift_filtered_v, cv2.COLOR_GRAY2RGB))
     plt.title("Espectro filtrado")
     plt.axis('off')
-
+    #
     plt.subplot(3, 3, 8)
     plt.imshow(cv2.cvtColor(image_fft_shift_filtered_unshift_v, cv2.COLOR_GRAY2RGB))
     plt.title("Espectro filtrado unshift")
