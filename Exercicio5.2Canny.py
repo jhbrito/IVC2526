@@ -1,8 +1,5 @@
 import cv2
-import numpy as np
 import os
-
-from skimage.filters.rank import threshold
 
 folder = "Files"
 file = "moedas.jpg"
