@@ -178,6 +178,20 @@ words["IPCA"] = "Instituto Politécnico do Cávado e do Ave"
 
 print("BAIT -", words["BAIT"])
 
+# save to file
+import json
+with open("var_dict.json", "w") as fp:
+    json.dump(words, fp)
+del(words)
+
+# load from file
+with open("var_dict.json", "r") as data_file:
+    words2 = json.load(data_file)
+print(words2)
+
+# delete file
+import os
+os.remove("var_dict.json")
 
 # Classes
 class MyClass:
