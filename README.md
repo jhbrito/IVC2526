@@ -14,6 +14,7 @@ conda install pillow
 conda install scikit-image
 conda install tk
 pip install opencv-contrib-python
+pip install ultralytics
 
 ## Export conda environment
 conda env export > environment.yml
