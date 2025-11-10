@@ -63,7 +63,7 @@ for i, file in enumerate(files):
                                           ddepth=-1,
                                           kernel=kernel_highpass_C)
 
-    plt.subplots(dpi=300, layout='constrained')
+    plt.subplots(dpi=300)
     plt.axis('off')
 
     plt.subplot(5, 4, 1)
