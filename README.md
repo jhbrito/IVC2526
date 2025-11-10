@@ -2,7 +2,7 @@
 
 # CONDA
 ## Create conda environment
-conda create -n IVC2526P311Env -python=3.11
+conda create -n IVC2526P311Env python=3.11
 
 or
 

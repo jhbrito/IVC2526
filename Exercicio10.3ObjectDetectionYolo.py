@@ -3,6 +3,7 @@ import cv2
 import os
 import numpy as np
 from ultralytics import YOLO
+import torch
 
 use_cam = False
 folder ="Files"
@@ -13,10 +14,14 @@ if use_cam:
 else:
     cap = cv2.VideoCapture(os.path.join(folder, file))
 
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+print(device)
+
 model = YOLO("yolov8n.pt")
 print("Known Classes ({})".format(len(model.names)))
 for i in range(len(model.names)):
     print(model.names[i])
+model.to(device)
 
 before = 0
 
@@ -38,6 +43,7 @@ while True:
             frame_mirror = frame
 
         objects = model.predict(frame_mirror, verbose=False)
+
         objects = objects[0]
 
         image_objects = frame_mirror.copy()
