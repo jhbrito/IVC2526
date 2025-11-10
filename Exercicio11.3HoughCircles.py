@@ -40,10 +40,10 @@ param2 = 40
 
 def update_circles():
     circles = cv2.HoughCircles(edges, method=cv2.HOUGH_GRADIENT,
-                               dp=dp,
-                               minDist=minDist,
-                               param1=param1,
-                               param2=param2)
+                               dp=dp,  # accumulator resolution
+                               minDist=minDist,  # Minimum distance between the centers of the detected circles
+                               param1=param1,  # HOUGH_GRADIENT parameter, higher threshold Canny edge detector
+                               param2=param2)  # accumulator threshold
     circles = circles[0]
     image_with_circles = img.copy()
     for circle in circles:
