@@ -5,7 +5,7 @@ import numpy as np
 from ultralytics import YOLO
 import torch
 
-use_cam = False
+use_cam = True
 folder ="Files"
 file = "vtest.avi"
 
@@ -18,6 +18,7 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 print(device)
 
 model = YOLO("yolov8n.pt")
+# model = YOLO("runs/detect/train2/weights/best.pt")
 print("Known Classes ({})".format(len(model.names)))
 for i in range(len(model.names)):
     print(model.names[i])
@@ -54,10 +55,17 @@ while True:
             if conf > 0.5:
                 p1 = (int(x1), int(y1))
                 p2 = (int(x2), int(y2))
+                if conf > 0.75:
+                    if model.names[int(class_id)] == "person":
+                        color = (0, 255, 0)
+                    else:
+                        color = (0, 0, 255)
+                else:
+                    color = (0, 0, 0)
                 cv2.rectangle(img=image_objects,
                               pt1=p1,
                               pt2=p2,
-                          color=(0, 255, 0),
+                          color=color,
                           thickness=2)
                 object_text = "{}:{:.2f}".format(model.names[int(class_id)], conf)
                 cv2.putText(img=image_objects,
@@ -65,7 +73,7 @@ while True:
                             org=(int(x1), int(y1)),
                             fontFace=cv2.FONT_HERSHEY_SIMPLEX,
                             fontScale=0.5,
-                            color=(0, 255, 0),
+                            color=color,
                             thickness=2)
 
 
