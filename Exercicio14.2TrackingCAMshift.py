@@ -43,7 +43,7 @@ while True:
 
         # Draw it on image
         pts = cv2.boxPoints(ret)
-        pts = np.int0(pts)
+        pts = pts.astype(np.int32)
         img2 = cv2.polylines(frame, [pts], True, 255, 2)
         cv2.imshow('img2', img2)
 
