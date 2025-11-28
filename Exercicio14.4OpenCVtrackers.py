@@ -4,10 +4,10 @@ import argparse
 import os
 
 parser = argparse.ArgumentParser()
-# parser.add_argument('--input', type=str, help='Path to a video or a sequence of image.',
-#                     default=os.path.join('Files', 'slow_traffic_small.mp4'))
 parser.add_argument('--input', type=str, help='Path to a video or a sequence of image.',
-                    default=os.path.join('Files', 'vtest.avi'))
+                    default=os.path.join('Files', 'slow_traffic_small.mp4'))
+# parser.add_argument('--input', type=str, help='Path to a video or a sequence of image.',
+#                     default=os.path.join('Files', 'vtest.avi'))
 args = parser.parse_args()
 
 cap = cv2.VideoCapture(args.input)
@@ -28,8 +28,9 @@ if tracker_type == 'ViT':
 ret, frame = cap.read()
 
 # Define an initial bounding box
-x, y, w, h = 250, 220, 45, 90  # simply hardcoded the values for traffic
+x, y, w, h = 150, 170, 40, 65  # simply hardcoded the values for traffic
 # x, y, w, h = 495, 156, 45, 80  # simply hardcoded the values for pedestrians vtest
+
 bbox = (x, y, w, h)
 img2 = cv2.rectangle(frame, (x, y), (x + w, y + h), 255, 2)
 cv2.imshow('inicial', img2)
