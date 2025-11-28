@@ -64,6 +64,7 @@ while True:
                                color[i].tolist(),
                                -1)
     img = cv2.add(new_frame, mask)
+    cv2.imshow("Mask", mask)
     cv2.imshow("Frame", img)
 
     k = cv2.waitKey(30)
