@@ -2,19 +2,26 @@
 
 # CONDA
 ## Create conda environment
-conda create -n IVC2526P311Env python=3.11
+conda create -n IVC2526P310Env python=3.10
 
 or
 
-conda create -p PATH python=3.11
+conda create -p PATH python=3.10
 
 # Install packages
 conda install jupyter
+
 conda install pillow
+
 conda install scikit-image
+
 conda install tk
+
 pip install opencv-contrib-python
+
 pip install ultralytics
+
+pip install filterpy
 
 ## Export conda environment
 conda env export > environment.yml
