@@ -23,6 +23,10 @@ pip install ultralytics
 
 pip install filterpy
 
+conda install -c conda-forge cudatoolkit=11.2 cudnn=8.1.0
+
+pip install "tensorflow<2.11"
+
 ## Export conda environment
 conda env export > environment.yml
 
