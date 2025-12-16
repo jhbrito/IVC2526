@@ -43,7 +43,8 @@ while True:
         else:
             frame_mirror = frame
 
-        objects = model.predict(frame_mirror, verbose=False)
+        frame_mirrorRGB = cv2.cvtColor(frame_mirror, cv2.COLOR_RGB2BGR)
+        objects = model.predict(frame_mirrorRGB, verbose=False)
 
         objects = objects[0]
 

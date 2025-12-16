@@ -23,9 +23,22 @@ pip install ultralytics
 
 pip install filterpy
 
+# Fix YOLO for GPU
+pip uninstall torch torchvision torchaudio
+
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+
+# For Tensorflow
+
+conda create -n TF210 --file environment.yml
+
+conda activate TF210
+
 conda install -c conda-forge cudatoolkit=11.2 cudnn=8.1.0
 
 pip install "tensorflow<2.11"
+
+pip install tensorflow_datasets
 
 ## Export conda environment
 conda env export > environment.yml
@@ -43,8 +56,3 @@ pip freeze > requirements.txt
 
 ## Unofficial Windows Binaries for Python Extension Packages
 <https://www.lfd.uci.edu/~gohlke/pythonlibs/>
-
-# Fix YOLO for GPU
-pip uninstall torch torchvision torchaudio
-
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
